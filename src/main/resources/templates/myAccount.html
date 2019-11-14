@@ -37,7 +37,10 @@
                         <div class="panel panel-default" style="border: none;">
                             <div class="panel-body"
                                  style="background-color: #ededed; margin-top: 20px;">
-                                <form>
+                                <div class="alert alert-info" th:if="${emailSent}">An email has been sent to email address you just
+                                    registered. Please validate your email address and update your personal information.
+                                </div>
+                                <form th:action="@{/newUser}" method="post">
                                     <div class="form-group">
                                         <label for="newUsername">User Name</label>
                                         <input type="text"
