@@ -9,7 +9,6 @@ import com.bookstore.service.impl.UserSecurityService;
 import com.bookstore.utility.MailConstructor;
 import com.bookstore.utility.SecurityUtility;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cglib.core.Local;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -25,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 import java.util.UUID;
 
@@ -102,7 +102,7 @@ public class HomeController {
     }
 
     @RequestMapping("/newUser")
-    public String newUser(Local local,
+    public String newUser(Locale locale,
                           @RequestParam("token") String token,
                           Model model) {
         PasswordResetToken passwordToken = userService.getPasswordResetToken(token);
@@ -118,6 +118,7 @@ public class HomeController {
                 userDetails.getPassword(),
                 userDetails.getAuthorities());
         SecurityContextHolder.getContext().setAuthentication(authentication);
+        model.addAttribute("user",user);
         model.addAttribute("classActiveEdit", true);
         return "myProfile";
     }

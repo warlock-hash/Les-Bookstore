@@ -8,7 +8,7 @@
     <div class="row" style="margin-bottom: -80px;">
         <div class="col-xs-8">
             <h2 class="section-headline">
-                <span th:text="${#strings.toUpperCase{user.username}}"></span>
+                <span th:text="${#strings.toUpperCase(user.username)}"></span>
             </h2>
         </div>
         <div class="col-xs-4">
@@ -66,9 +66,9 @@
                                         <label for="userName">Username</label>
                                         <input type="text"
                                                class="form-group"
-                                               name="userName"
+                                               name="username"
                                                id="userName"
-                                               th:value="${user.userName}"/>
+                                               th:value="${user.username}"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="currentPassword">Current Password</label>
